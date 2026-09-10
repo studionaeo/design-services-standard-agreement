@@ -11,3 +11,9 @@
 - `协议/` — 存放《设计服务标准协议书》的各种格式文件（如 md / pdf / docx），方便提取与分发。
 - `xhs-tools/` — 用于开发小红书小工具。
 - `.agents/skills/` — 内置的 AI skill（让 agent 自动读取协议，通常无需手动操作）。
+
+<!--
+## 使用方式
+
+将仓库链接：`https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
+-->
