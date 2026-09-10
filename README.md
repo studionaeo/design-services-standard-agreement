@@ -4,4 +4,4 @@
 
 ## 使用方式
 
-用**能读取本仓库文件的 AI 工具**（把仓库 clone 到本地，用 DSH、Claude Code、Cursor 等打开），直接说「把设计服务标准协议书给我」即可——agent 会读取 `协议/` 文件夹里的文件提供给你；支持 skill 的工具（DSH、Claude）会自动识别内置 skill，效果一致。
+把仓库链接 `https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
