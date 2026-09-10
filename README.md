@@ -4,4 +4,4 @@
 
 ## 使用方式
 
-把仓库链接 `https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
+将仓库链接：`https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
