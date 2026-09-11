@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>设计服务标准协议书</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <article class="doc-body" id="doc-body"></article>
+
+  <!-- 浮动目录按钮 -->
+  <button id="fab-toc" class="fab-toc" type="button">目录</button>
+
+  <!-- 悬浮目录窗 -->
+  <div id="toc-sheet" class="toc-sheet">
+    <div class="toc-sheet-mask" id="toc-sheet-mask"></div>
+    <div class="toc-sheet-panel">
+      <div class="toc-sheet-head">
+        <span class="toc-sheet-title">目录</span>
+        <button id="toc-sheet-close" class="toc-sheet-close" type="button">×</button>
+      </div>
+      <ol class="toc-sheet-list" id="toc-sheet-list"></ol>
+    </div>
+  </div>
+
+  <script src="./assets/data.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>

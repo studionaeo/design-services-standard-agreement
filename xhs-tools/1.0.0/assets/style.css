@@ -1,0 +1,292 @@
+/* 设计服务标准协议书 · 移动端阅读版式
+   Chrome 61 基线:物理属性 / 固定值 + 媒体查询 */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  background: #ffffff;
+  color: #1f1f1f;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* 支持时自动调整中西文间距；旧 WebView 保持原样。 */
+@supports (text-autospace: normal) {
+  body { text-autospace: normal; }
+}
+
+/* ---------- 目录 ---------- */
+.toc-head-cn {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 16px;
+}
+.toc-list { list-style: none; }
+.toc-item {
+  display: flex;
+  padding: 8px 8px;
+  margin: 0 -8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.toc-item:active { background: #f5f5f5; }
+.toc-no {
+  flex: 0 0 38px;
+  font-size: 14px;
+  color: #888888;
+  padding-top: 2px;
+}
+.toc-main { flex: 1 1 auto; min-width: 0; }
+.toc-cn { font-size: 16px; font-weight: 500; line-height: 1.5; color: #1f1f1f; }
+.toc-sub {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #666666;
+  padding: 3px 0;
+  cursor: pointer;
+}
+.toc-sub:active { color: #ff2442; }
+.toc-sub.lvl4 { margin-left: 16px; }
+.toc-sub.lvl5 { margin-left: 32px; }
+.toc-sub.lvl6 { margin-left: 48px; }
+
+/* ---------- 正文 ---------- */
+/* 顶部为系统安全区及导航按钮预留空间；44px 为导航区预留值。 */
+.doc-body {
+  padding: 52px 24px 32px;
+  padding-top: calc(52px + var(--safe-area-inset-top, 0px));
+  padding-top: calc(52px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));
+}
+.chapter {
+  padding-top: 36px;
+  margin-top: 36px;
+  border-top: 1px solid #eeeeee;
+}
+.chapter:first-child { border-top: none; margin-top: 0; }
+.chapter-title-en {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #777777;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+.chapter-title-cn {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #111111;
+  margin-bottom: 20px;
+}
+.chapter p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  text-align: justify;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.chapter h3 {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #111111;
+  margin: 28px 0 12px;
+}
+.chapter p.download-note {
+  padding: 14px 16px;
+  margin: 16px 0;
+  background: #f5f5f5;
+  border-left: 3px solid #d0d0d0;
+  border-radius: 4px;
+  text-align: left;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.chapter h4 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #111111;
+  margin: 24px 0 10px;
+}
+.clause-num { font-weight: 700; }
+.chapter h5, .chapter h6 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #111111;
+  margin: 20px 0 8px;
+}
+.chapter h6 { font-weight: 600; margin-top: 16px; }
+.body-list {
+  padding-left: 2em;
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+ol.body-list { list-style-type: decimal; }
+ul.body-list { list-style-type: disc; }
+.body-list > li { margin-bottom: 12px; }
+
+/* 签署页表格 */
+.sig-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #1f1f1f;
+}
+.sig-table td {
+  border: 1px solid #bbbbbb;
+  padding: 12px 12px;
+  vertical-align: top;
+  width: 50%;
+}
+
+/* 较宽屏幕(PC 模拟器)收拢行宽 */
+@media (min-width: 600px) {
+  .doc-body {
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+}
+
+/* ---------- 浮动目录按钮 ---------- */
+.fab-toc {
+  position: fixed;
+  right: 16px;
+  bottom: 20px;
+  bottom: calc(20px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+  z-index: 90;
+  padding: 11px 22px;
+  border: none;
+  border-radius: 24px;
+  background: #ff2442;
+  color: #ffffff;
+  font-size: 14px;
+  box-shadow: 0 4px 14px rgba(255, 36, 66, 0.35);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s;
+}
+.fab-toc.show {
+  opacity: 1;
+  visibility: visible;
+}
+.fab-toc:active { opacity: 0.75; }
+
+/* ---------- 悬浮目录窗 ---------- */
+.toc-sheet {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  visibility: hidden;
+}
+.toc-sheet.open { visibility: visible; }
+.toc-sheet-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.toc-sheet.open .toc-sheet-mask { opacity: 1; }
+.toc-sheet-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 72vh;
+  background: #ffffff;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform 0.25s ease;
+}
+.toc-sheet.open .toc-sheet-panel { transform: translateY(0); }
+.toc-sheet-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.toc-sheet-title {
+  flex: 1 1 auto;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111111;
+}
+.toc-sheet-close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 16px;
+  background: #f2f2f2;
+  color: #666666;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.toc-sheet-close:active { background: #e6e6e6; }
+.toc-sheet-list {
+  flex: 1 1 auto;
+  position: relative;
+  list-style: none;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 0 20px;
+  padding-bottom: calc(20px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+}
+.toc-sheet-item {
+  display: flex;
+  padding: 4px 20px;
+  cursor: pointer;
+}
+.toc-sheet-item:active { background: #f5f5f5; }
+.toc-sheet-item .ts-no {
+  flex: 0 0 38px;
+  font-size: 14px;
+  color: #888888;
+  padding-top: 1px;
+}
+.toc-sheet-item .ts-cn {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1f1f1f;
+}
+.toc-sheet-item.cur .ts-no,
+.toc-sheet-item.cur .ts-cn {
+  color: #ff2442;
+  font-weight: 700;
+}
+.ts-sub {
+  padding: 8px 20px 8px 58px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #666666;
+  cursor: pointer;
+}
+.ts-sub:active { background: #f5f5f5; color: #ff2442; }
+.ts-sub.lvl4 { padding-left: 74px; }
+.ts-sub.lvl5 { padding-left: 90px; }
+.ts-sub.lvl6 { padding-left: 106px; }
