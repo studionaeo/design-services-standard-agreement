@@ -4,7 +4,7 @@
 
 ## 使用方式
 
-- 点击下方直接下载；
+- 点击下方文件浏览下载；
 - 或将仓库链接：`https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
 
 ## 文件
