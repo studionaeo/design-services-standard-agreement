@@ -6,7 +6,7 @@
 
 仓库主体是《设计服务标准协议书》(内容在 `../协议/`,md 是内容本身,pdf 是排版参考)。`xhs-tools/` 的任务:把协议做成**小红书小工具**(离线 H5,打 zip 由容器加载)。
 
-- 小工具开发规范在 `../.skill/minitool-zip-builder/`(SKILL.md + 7 份 reference + 审计脚本)。**动手前必须读对应 reference 并严格遵守**:离线不联网、资源全包内、脚本必须外置经典脚本(禁 inline/`type=module`)、JS ≤ ES2017(Chrome 61 基线)、CSS Chrome 61 基线 + 能力检测增强。
+- 小工具开发规范在 `minitool-zip-builder/`(SKILL.md + 7 份 reference + 审计脚本)。**动手前必须读对应 reference 并严格遵守**:离线不联网、资源全包内、脚本必须外置经典脚本(禁 inline/`type=module`)、JS ≤ ES2017(Chrome 61 基线)、CSS Chrome 61 基线 + 能力检测增强。
 - 当前版本目录:`1.0.0/`。
 - `icons/`：存放小工具图标素材；独立于版本页面目录，不自动打入页面 ZIP。空目录通过 `.gitkeep` 保留。
 
@@ -71,7 +71,7 @@ python xhs-tools/build_data.py
 # JS 语法与产物体积审计
 node --check xhs-tools/1.0.0/main.js
 node --check xhs-tools/1.0.0/assets/data.js
-python .skill/minitool-zip-builder/scripts/audit_artifact.py xhs-tools/1.0.0
+python xhs-tools/minitool-zip-builder/scripts/audit_artifact.py xhs-tools/1.0.0
 
 # 违禁模式初筛；不能代替 skill 的完整自查清单
 rg -n 'https?://|onclick|<iframe|<object|eval\(|new Function|fetch\(|XMLHttpRequest|window\.open|target="_blank"' xhs-tools/1.0.0
@@ -90,7 +90,7 @@ rg -n 'https?://|onclick|<iframe|<object|eval\(|new Function|fetch\(|XMLHttpRequ
 
 ```powershell
 python -c "from pathlib import Path; import zipfile; root=Path('xhs-tools/1.0.0'); files=['index.html','main.js','assets/style.css','assets/data.js']; z=zipfile.ZipFile('xhs-tools/studio-naeo-minitool-1.0.0.zip','w',zipfile.ZIP_DEFLATED); [z.write(root/f,f) for f in files]; z.close()"
-python .skill/minitool-zip-builder/scripts/audit_artifact.py xhs-tools/studio-naeo-minitool-1.0.0.zip
+python xhs-tools/minitool-zip-builder/scripts/audit_artifact.py xhs-tools/studio-naeo-minitool-1.0.0.zip
 ```
 
 ## 待办 / 边界
