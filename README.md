@@ -2,6 +2,11 @@
 
 汇集国内几十家独立工作室的合同样本，参考 AIGA 国际设计服务协议，再对照《民法典》《著作权法》《商标法》《仲裁法》《民事诉讼法》等中国法律，做本土化梳理后形成的一份标准协议文本。
 
+## 使用方式
+
+- 点击下方直接下载；
+- 或将仓库链接：`https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
+
 ## 文件
 
 - [设计服务标准协议书（PDF）](协议/设计服务标准协议书.pdf)
@@ -12,8 +17,4 @@
 
 - `协议/` — 存放《设计服务标准协议书》的各种格式文件（如 md / pdf / docx），方便提取与分发。
 - `.agents/skills/` — 内置的 AI skill（让 agent 自动读取协议，通常无需手动操作）。
-
-## 使用方式
-
-点击上方「文件」直接下载，或将仓库链接：`https://github.com/studionaeo/design-services-standard-agreement` 发给你的 AI 助手，让它读取里面的《设计服务标准协议书》并提供给你。
 
